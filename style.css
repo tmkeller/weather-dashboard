@@ -1,0 +1,14 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+#header_main {
+    text-align: center;
+    background-color: grey;
+}
+
+#sidebar_main {
+    background-color: rgb(58, 58, 58);
+    padding: 10px 15px;
+}
