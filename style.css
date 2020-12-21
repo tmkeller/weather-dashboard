@@ -50,10 +50,15 @@ body {
 
 .daily_card {
     padding-top: 14px;
+    padding-bottom: 14px;
     font-size: 12px;
     background-color: black;
     border-radius: 14px;
-    margin: 0 8px;
+    margin: 4px 8px;
+}
+
+.daily_card p {
+    margin: 6px 0 6px 0;
 }
 
 #uv_index {
