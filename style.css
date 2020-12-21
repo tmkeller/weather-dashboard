@@ -37,11 +37,23 @@ body {
     background-color: rgb(197, 197, 197)
 }
 
-#main_card {
+#content_header, #forecast_header {
+    margin-bottom: 22px;
+}
+
+#main_card, #forecast_card {
     background-color: #232323;
-    padding: 12px 20px 4px 20px;
+    padding: 12px 20px 16px 20px;
     margin-top: 8px;
     border-radius: 12px;
+}
+
+.daily_card {
+    padding-top: 14px;
+    font-size: 12px;
+    background-color: black;
+    border-radius: 14px;
+    margin: 0 8px;
 }
 
 #uv_index {
