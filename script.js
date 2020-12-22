@@ -1,4 +1,11 @@
 var APIkey = "d496986a7fe0f4f18c2555bc37b9566b";
+var cityStorage = JSON.parse( localStorage.getItem( "cityStorage") ) || [];
+if ( cityStorage.length > 0 ) {
+    for ( var i = 0; i < cityStorage.length; i++ ) {
+        addListCity( cityStorage[ i ] );
+    }
+    addClickEvent();
+};
 
 $( "#submit_search" ).click( function( event ) {
     event.preventDefault();
@@ -80,16 +87,13 @@ function queryCurrentWeather( cityName, apiKey, units, addListElement = false ) 
                 $( "#card_row" ).append( dailyCard );
             }
 
-            if ( addListElement ) {
-                var newCity = $( "<li>" );
-                newCity.addClass( "sidebar_city" );
-                newCity.text( cwResponse.name );
-                $( "#city_search" ).val( "" );
-                $( "#card_list" ).append( newCity );
-                $( ".sidebar_city" ).click( function() {
-                    queryCurrentWeather( $( this ).text(), APIkey, "imperial" );
-                });
+            if ( addListElement && cityStorage.indexOf( cwResponse.name ) == -1 ) {
+                cityStorage.push( cwResponse.name );
+                addListCity( cwResponse.name );
+                addClickEvent();
             }
+
+            localStorage.setItem( "cityStorage", JSON.stringify( cityStorage ) );
 
         }).catch( function() {
             inputAjaxError();
@@ -97,23 +101,25 @@ function queryCurrentWeather( cityName, apiKey, units, addListElement = false ) 
     }).catch( function() {
         inputAjaxError();
     });
-}
+};
 
 function inputAjaxError() {
     $( "#input_form_main" ).append( "<p id='error_msg' style='color: red;'>Could not find location</p>" );
     setTimeout( function() {
         $( "#error_msg" ).remove();
     }, 3000 );
+};
+
+function addListCity( name ) {
+    var newCity = $( "<li>" );
+    newCity.addClass( "sidebar_city" );
+    newCity.text( name );
+    $( "#city_search" ).val( "" );
+    $( "#card_list" ).append( newCity );
 }
 
-function queryForecast( cityName, apiKey, units ) {
-
-    var queryURL = `pro.openweathermap.org/data/2.5/forecast/hourly?q=${ cityName }&units=${ units}&appid=${ apiKey }`;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then( function( response ) {
-        console.log( "That's an error." );
-    })
-}
+function addClickEvent() {
+    $( ".sidebar_city" ).click( function() {
+        queryCurrentWeather( $( this ).text(), APIkey, "imperial" );
+    });
+};
