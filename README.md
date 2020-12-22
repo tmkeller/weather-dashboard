@@ -1,46 +1,39 @@
-# 06 Server-Side APIs: Weather Dashboard
+# Weather Dashboard
+Weather dashboard using OpenWeatherMap API. Built for UW's 12-week coding bootcamp.
 
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+# About the author
 
-Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
+Timothy M. Keller is a web developer and musician residing in Seattle, WA.
 
-## User Story
+Email: timothy.m.keller@gmail.com
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
+Github: https://github.com/tmkeller
 
-## Acceptance Criteria
+LinkedIn: https://linkedin.com/in/tim-keller-3ab55bb1/
 
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-WHEN I open the weather dashboard
-THEN I am presented with the last searched city forecast
-```
+# Features
 
-The following image demonstrates the application functionality:
+Weather dashboard using the OpenWeatherMap API. Displays weather information for user-selected cities, as well as a forecast. This web app has the following features:
 
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
+* Temperature, humidity, wind speed, and UV index display, complete with a variable background for the UV display to indicate the hazardousness of prolonged time outdoors.
+* Icons to show cloudiness make it easy to tell basic weather conditions at a glance.
+* 5-day forecast displays temp, humidity, and cloudiness icon for as far as 5-days in advance.
+* Sidebar allows user to add their custom cities, and maintains user choices persistently between sessions using localStorage.
+* Responsive design looks good on desktop, tablet, and mobile.
+* Built with JQuery, Javascript, Bootstrap, and OpenWeatherMap API.
 
-## Review
+## Product
 
-You are required to submit the following for review:
+[Live Site URL](https://tmkeller.github.io/weather-dashboard/)
 
-* The URL of the deployed application.
+![Screenshot](./mockup/screenshot.png)
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+## Technologies
 
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+![javascript](https://img.shields.io/badge/javascript-14.3%25-yellow)
+![html](https://img.shields.io/badge/html-70.6%25-blue)
+![css](https://img.shields.io/badge/css-15.1%25-red)
+
+## License
+
+[CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)
