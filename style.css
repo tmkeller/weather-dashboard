@@ -3,6 +3,19 @@ body {
     color: white;
 }
 
+h1 {
+    display: inline-block;
+}
+
+#weather_icon {
+    vertical-align: top;
+}
+
+h5 {
+    font-size: 1.1rem;
+    text-align: center;
+}
+
 #header_main {
     text-align: center;
     background-color: grey;
@@ -49,8 +62,8 @@ body {
 }
 
 .daily_card {
-    padding-top: 14px;
-    padding-bottom: 14px;
+    text-align: center;
+    padding: 14px 0;
     font-size: 12px;
     background-color: black;
     border-radius: 14px;
@@ -64,4 +77,9 @@ body {
 #uv_index {
     padding: 1px 10px;
     border-radius: 8px;
+}
+
+#clear_list {
+    outline: none;
+    margin-top: 2px;
 }

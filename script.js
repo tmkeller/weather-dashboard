@@ -41,6 +41,7 @@ function queryCurrentWeather( cityName, apiKey, units, addListElement = false ) 
             url: oneCallURL,
             method: "GET"
         }).then( function( ocResponse ) {
+            console.log( ocResponse );
             // Create a new Date object to display the date.
             var d = new Date();
             // Get the UV index.
@@ -49,16 +50,18 @@ function queryCurrentWeather( cityName, apiKey, units, addListElement = false ) 
     
             // Update center card.
             $( "#main_card" ).text( "" );
-            var headerH1 = $( "h1" ).text( `${ cwResponse.name } ${ d.getMonth() + 1 }/${ d.getDate() }/${ d.getFullYear() }` ).attr( "id", "content_header");
-
             var headerH1 = $( `<h1>${ cwResponse.name } ${ d.getMonth() + 1 }/${ d.getDate() }/${ d.getFullYear() }</h1>`);
             headerH1.attr( "id", "content_header" );
+            var icon = $( "<img>" );
+            icon.attr( "src", `http://openweathermap.org/img/wn/${ ocResponse.current.weather[ 0 ].icon }.png` );
+            icon.attr( "id", "weather_icon");
             var tempP = $( `<p>Temperature: ${ temp } °F</p>` );
             var humidityP = $( `<p>Humidity: ${ ocResponse.current.humidity }%</p>` );
             var windP = $( `<p>Wind speed: ${ ocResponse.current.wind_speed } MPH</p>` );
             var uvIndexP = $( `<p>UV Index: <span id="uv_index">${ uvIndex }</span></p>`);
             // Add above elements to center card.
             $( "#main_card" ).append( headerH1 );
+            $( "#main_card" ).append( icon );
             $( "#main_card" ).append( tempP );
             $( "#main_card" ).append( humidityP );
             $( "#main_card" ).append( windP );
@@ -84,7 +87,7 @@ function queryCurrentWeather( cityName, apiKey, units, addListElement = false ) 
                 var dailyCard = $( "<section>" );
                 dailyCard.addClass( "daily_card col-md-2");
                 var cardDateHeader = $( "<h5>" ).text( `${ d.getMonth() + 1 }/${ d.getDate() }/${ d.getFullYear() }` );
-                var cardIcon = $( "<span>" ).text( "Icon Placeholder" );
+                var cardIcon = $( "<img>" ).addClass( "daily_icon" ).attr( "src", `http://openweathermap.org/img/wn/${ ocResponse.daily[ i ].weather[ 0 ].icon }.png` );
                 var cardTemp = $( "<p>" ).text( `Temp: ${ Math.round( ocResponse.daily[ i ].temp.day ) } °F` );
                 var cardHumidity = $( `<p>Humidity: ${ ocResponse.daily[ i ].humidity }%</p>` );
 
@@ -133,3 +136,17 @@ function addClickEvent() {
         queryCurrentWeather( $( this ).text(), APIkey, "imperial" );
     });
 };
+// Adds click and mouseup event to "Clear list" button.
+$( "#clear_list" ).mousedown( function( event ) {
+    $( this ).css( "background-color", "grey" );
+    localStorage.removeItem( "cityStorage" );
+    cityStorage = [];
+    $( "#card_list" ).text( "" );
+    // Prevents visual bug where the clear button stays dark.
+    setTimeout( function() {
+        $( "#clear_list" ).css( "background-color", "white" );
+    }, 100 );
+});
+$( "#clear_list" ).mouseup( function( event ) {
+    $( this ).css( "background-color", "white" );
+});
