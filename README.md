@@ -30,9 +30,9 @@ Weather dashboard using the OpenWeatherMap API. Displays weather information for
 
 ## Technologies
 
-![javascript](https://img.shields.io/badge/javascript-14.3%25-yellow)
-![html](https://img.shields.io/badge/html-70.6%25-blue)
-![css](https://img.shields.io/badge/css-15.1%25-red)
+![javascript](https://img.shields.io/badge/javascript-67.5%25-yellow)
+![html](https://img.shields.io/badge/html-21.3%25-blue)
+![css](https://img.shields.io/badge/css-11.2%25-red)
 
 ## License
 
